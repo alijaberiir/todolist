@@ -4,7 +4,7 @@ from .views import listtodo,addtodo,deltodo,uptodo
 
 urlpatterns = [
 
-    path('',listtodo.as_view()),
+    path('',listtodo.as_view(),name='index'),
     path('add/',addtodo.as_view(),name='add'),
     path('del/<int:pk>/',deltodo.as_view(),name='del'),
     path('up/<int:pk>/',uptodo.as_view(),name='up'),

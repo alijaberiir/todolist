@@ -1,13 +1,14 @@
 {% extends "base/base.html" %}
+{% load static %}
 {% load widget_tweaks %}
-
 {% block body %}
-
+<link rel="stylesheet" href="{% static 'todo/mystyle.css' %}">
 <div class="row d-flex justify-content-center ">
 	<div class="col-md-12">
 	  	<form action="/add/" method = "post">{% csrf_token %}
 			<div class="input-group mb-3">
 				<input type="text" class="form-control" name="title">
+				
 				<div class="input-group-append">
 					<button type="submit" class="btn btn-success">افزودن</button>
 					<button type="reset" class="btn btn-dark">
@@ -15,6 +16,31 @@
 					</button>
 				</div>
 			</div>
+			
+			<div class="input-group my-4">
+				<label class="container1">
+				  <input type="radio" checked="checked"  value="1" name="priority">
+				  <span class="checkmark1"></span>
+				</label>
+				<label class="container2">
+					<input type="radio"  value="2" name="priority">
+					<span class="checkmark2"></span>
+				  </label>
+				  <label class="container3">
+					<input type="radio"  value="3" name="priority">
+					<span class="checkmark3"></span>
+				  </label>
+				  <label class="container4">
+					<input type="radio"  value="4" name="priority">
+					<span class="checkmark4"></span>
+				  </label>
+				  <label class="container5">
+					<input type="radio" value="5"  name="priority">
+					<span class="checkmark5"></span>
+				  </label>
+			
+			</div>
+
 		</form>
 	</div>
 </div>
@@ -34,7 +60,18 @@
 							<ul class=" list-group list-group-flush">
 								{% for todo in object_list %}
 									<li class="list-group-item">
-									
+										{% if todo.priority == '1' %}
+										<div class="todo-indicator bg1"></div>
+										{% elif todo.priority == '2' %}
+										<div class="todo-indicator bg2"></div>
+										{% elif todo.priority == '3' %}
+										<div class="todo-indicator bg3"></div>
+										{% elif todo.priority == '4' %}
+										<div class="todo-indicator bg4"></div>
+										{% elif todo.priority == '5' %}
+										<div class="todo-indicator bg5"></div>
+										{% endif %}
+										
 										<div class="widget-content p-0">
 											<div class="widget-content-wrapper">
 												<div class="widget-content-left mr-2">

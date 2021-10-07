@@ -5,6 +5,6 @@ from .models import Todolist
 
 
 class Todo(admin.ModelAdmin):
-    list_display = ('title', 'created', 'status', )
+    list_display = ('title', 'created', 'status', 'priority' )
 
 admin.site.register(Todolist, Todo)
